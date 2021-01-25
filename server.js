@@ -7,15 +7,26 @@ import orderRouter from "./routers/orderRouter.js";
 
 dotenv.config();
 
+const MONGODB =
+  "mongodb+srv://ShoeDemoShop:Juanca90@cluster0.xl6hv.mongodb.net/ShoeDemoShop?retryWrites=true&w=majority";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amazon", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+mongoose
+  .connect(MONGODB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    console.log(`Mongoose connected to ${MONGODB}`);
+
+    // converter.strToBoolConverterCsv();
+    // logoUpdater.updateLogos();
+    // prioritySorter.sorter();
+  })
+  .catch((err) => console.log(err));
 
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
