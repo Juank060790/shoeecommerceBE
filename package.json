@@ -2,7 +2,7 @@
   "name": "ecbackend",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
+  "description": "ShoeEcommerce DEMO",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,5 +24,6 @@
     "eslint": "^7.16.0",
     "eslint-plugin-react": "^7.22.0",
     "nodemon": "^2.0.6"
-  }
+  },
+  "engines": {"node":"12.4.0", "npm": "6.9.0"}
 }
