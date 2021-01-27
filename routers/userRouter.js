@@ -17,7 +17,9 @@ const userRouter = express.Router();
 
 userRouter.post(
   "/signin",
+
   expressAsyncHandler(async (req, res) => {
+    console.log("USEEEER1");
     const user = await User.findOne({ email: req.body.email });
     console.log("USEEEER", user);
     if (user) {

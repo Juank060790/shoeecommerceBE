@@ -18,7 +18,7 @@ mongoose
     useCreateIndex: true,
   })
   .then(() => {
-    console.log(`Mongoose connected to ${process.env.MONGODB}`);
+    console.log(`YEEEEY Mongoose connected to ${process.env.MONGODB}`);
   })
   .catch((err) => console.log(err));
 
