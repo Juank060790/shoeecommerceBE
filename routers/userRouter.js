@@ -1,29 +1,17 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
-// import data from "../data.js";
 import User from "../models/userModel.js";
 import { generateToken, isAuth } from "../utils.js";
 
 const userRouter = express.Router();
 
-// userRouter.get(
-//   "/seed",
-//   expressAsyncHandler(async (req, res) => {
-//     const createdUsers = await User.insertMany(data.users);
-//     res.send({ createdUsers });
-//   })
-// );
-
 userRouter.post(
   "/signin",
 
   expressAsyncHandler(async (req, res) => {
-    console.log("USEEEER1");
     const user = await User.findOne({ email: req.body.email });
-    console.log("USEEEER", user);
     if (user) {
-      console.log("IFFF SENT");
       if (bcrypt.compareSync(req.body.password, user.password)) {
         res.send({
           _id: user._id,
@@ -32,7 +20,6 @@ userRouter.post(
           isAdmin: user.isAdmin,
           token: generateToken(user),
         });
-        console.log("token", token);
         return;
       }
     }
